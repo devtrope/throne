@@ -1,18 +1,16 @@
 <?php
 
-$dbHost = 'mysql_app';
-$dbName = 'mydb';
-$dbUser = 'user';
-$dbPassword = 'password';
+$database = require_once 'config/database.php';
 
 $dsn = sprintf(
-    'mysql:host=%s;dbname=%s',
-    $dbHost,
-    $dbName
+    'mysql:host=%s;port=%s;dbname=%s',
+    $database['host'],
+    $database['port'],
+    $database['name']
 );
 
-$database = new PDO(
+$db = new PDO(
     $dsn,
-    $dbUser,
-    $dbPassword
+    $database['user'],
+    $database['password']
 );
